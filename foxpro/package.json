@@ -5,22 +5,56 @@
 	"version": "0.0.1",
 	"publisher": "MattSlay",
 	"engines": {
-		"vscode": "^0.10.1"
+		"vscode": "^1.5.0",
+		"node": "^6.3.0"
 	},
 	"categories": [
 		"Languages"
 	],
+	"scripts": {
+		"vscode:prepublish": "tsc -p ./",
+		"make": "./node_modules/.bin/vsce package",
+		"bash": "bash.exe make build",
+		"postinstall": "node ./node_modules/vscode/bin/install"
+	},
+    "devDependencies": {
+		"@types/es6-collections": "^0.5.29",
+		"@types/es6-promise": "0.0.32",
+        "@types/glob": "^5.0.33",
+        "@types/mocha": "^2.2.43",
+        "@types/node": "^7.0.43",
+        "typescript": "^2.5.3",
+		"vsce": "^1.20.0",
+		"vscode": "^1.0.3",
+		"vscode-nls-dev": "^2.0.1"
+	},
+    "dependencies": {
+        "mocha": "^4.0.1",
+        "request": "^2.83.0",
+		"vscode-nls": "^2.0.2"
+	},
 	"contributes": {
-		"languages": [{
-			"id": "foxpro",
-			"aliases": ["foxpro", "Visual FoxPro", "VFP"],
-			"extensions": [".prg", ".PRG"],
-			"configuration": "./foxpro.configuration.json"
-		}],
-		"grammars": [{
-			"language": "foxpro",
-			"scopeName": ".foxpro",
-			"path": "./syntaxes/foxpro.plist"
-		}]
+		"languages": [
+			{
+				"id": "foxpro",
+				"aliases": [
+					"foxpro",
+					"Visual FoxPro",
+					"VFP"
+				],
+				"extensions": [
+					".prg",
+					".PRG"
+				],
+				"configuration": "./foxpro.configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "foxpro",
+				"scopeName": ".foxpro",
+				"path": "./syntaxes/foxpro.plist"
+			}
+		]
 	}
 }
